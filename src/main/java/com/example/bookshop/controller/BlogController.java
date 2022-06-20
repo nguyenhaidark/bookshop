@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.core.io.Resource;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.bookshop.entity.Blog;
 import com.example.bookshop.myfunction.AppConstants;
@@ -51,9 +50,6 @@ public class BlogController {
 	@PostMapping("/add")
 	public String addBlog(Blog blog, @RequestParam MultipartFile file) throws Exception {
 		if (file.getContentType().contains("image")) {
-//			String url = ServletUriComponentsBuilder.fromCurrentContextPath()
-//					.path("/blog/image/" + file.getOriginalFilename()).toUriString();
-//			blog.setUrlImage(url);
 			blogImpl.addBlog(blog, file);
 			return "successfully added new";
 		} else {
