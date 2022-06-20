@@ -73,4 +73,18 @@ http://localhost:8080/role/delete?id=2  (xóa data theo id).
 
 ====================================================================================
 
+Category
+-GET METHOD-
+http://localhost:8080/category/get?pageSize=5  (Số data trong 1 trang).
+http://localhost:8080/category/get?pageSize=5&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
+http://localhost:8080/category/get?pageSize=5&pageNo=0&sortBy=name  (sắp xếp theo tên cột).
+http://localhost:8080/category/get?pageSize=5&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
+http://localhost:8080/category/get?id=2  (lấy ra category theo id).
+http://localhost:8080/category/findByName?name=category7 (filter theo name).
+-POST METHOD-
+http://localhost:8080/category/add  (các tham số cần truyền :name,status).
+-PUT METHOD-
+http://localhost:8080/category/update  (các tham số cần truyền :id,name,status).
+-DELETE METHOD-
+http://localhost:8080/category/delete?id=2  (xóa data theo id).
 
