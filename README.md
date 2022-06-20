@@ -28,9 +28,9 @@ http://localhost:8080/publisher/get?pageSize=5&pageNo=0&sortBy=content&sortDir=a
 http://localhost:8080/publisher/get?id=2  (lấy ra publisher theo id).
 http://localhost:8080/publisher/findByName?name=publisher7  (filter theo name).
 -POST METHOD-
-http://localhost:8080/publisher/add  (các tham số cần truyền :,name,status).
+http://localhost:8080/publisher/add  (các tham số cần truyền :name,address,status).
 -PUT METHOD-
-http://localhost:8080/publisher/update  (các tham số cần truyền :id,name,status).
+http://localhost:8080/publisher/update  (các tham số cần truyền :id,name,address,status).
 -DELETE METHOD-
 http://localhost:8080/publisher/delete?id=2  (xóa data theo id).
 ==========================================================================================================================
