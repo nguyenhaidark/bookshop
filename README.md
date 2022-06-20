@@ -1,0 +1,19 @@
+# bookshop
+e-projectSemIV
+API
+
+Blog
+-GET METHOD-
+http://localhost:8080/blog/get?pageSize=6  (Số data trong 1 trang).
+http://localhost:8080/blog/get?pageSize=6&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
+http://localhost:8080/blog/get?pageSize=6&pageNo=0&sortBy=title  (sắp xếp theo tên cột).
+http://localhost:8080/blog/get?pageSize=6&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
+http://localhost:8080/blog/findById?id=2  (lấy ra blog theo id)
+http://localhost:8080/blog/findByTitle?title=blog7  (filter theo title).
+http://localhost:8080/blog/image/wallpapersden.com_neon-shallows_5120x2880.jpg(link ảnh hoặc dowload)
+-POST METHOD-
+http://localhost:8080/blog/add  (các tham số cần truyền :file(multipart để upload),title,content,status).
+-PUT METHOD-
+http://localhost:8080/blog/update  (các tham số cần truyền :id,file(multipart để upload),title,content,status).
+-DELETE METHOD-
+http://localhost:8080/blog/delete?id=2  (xóa data theo id).
