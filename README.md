@@ -55,22 +55,6 @@ http://localhost:8080/author/update  (các tham số cần truyền :id,name,sta
 http://localhost:8080/author/delete?id=2  (xóa data theo id).
 
 ====================================================================================
-
-Role
--GET METHOD-
-http://localhost:8080/role/get?pageSize=5  (Số data trong 1 trang).
-http://localhost:8080/role/get?pageSize=5&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
-http://localhost:8080/role/get?pageSize=5&pageNo=0&sortBy=name  (sắp xếp theo tên cột).
-http://localhost:8080/role/get?pageSize=5&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
-http://localhost:8080/role/get?id=2  (lấy ra role theo id).
-http://localhost:8080/role/findByName?name=role7 (filter theo name).
--POST METHOD-
-http://localhost:8080/role/add  (các tham số cần truyền :name,status).
--PUT METHOD-
-http://localhost:8080/role/update  (các tham số cần truyền :id,name,status).
--DELETE METHOD-
-http://localhost:8080/role/delete?id=2  (xóa data theo id).
-
 ====================================================================================
 
 Category
