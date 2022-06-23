@@ -2,7 +2,9 @@ package com.example.bookshop.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,7 @@ import com.example.bookshop.myfunction.AppConstants;
 import com.example.bookshop.myfunction.DowloadFile;
 import com.example.bookshop.service.impl.BlogImpl;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/blog")
 public class BlogController {
@@ -46,7 +49,7 @@ public class BlogController {
 	public List<Blog> getByTile(@RequestParam String title) {
 		return blogImpl.getBlogByTitle(title);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PostMapping("/add")
 	public String addBlog(Blog blog, @RequestParam MultipartFile file) throws Exception {
 		if (file.getContentType().contains("image")) {
@@ -63,12 +66,12 @@ public class BlogController {
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType("application/octet-stream"))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "\"" + fileName + "\"").body(resource);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PutMapping("/update")
 	public Blog updateBlog(Blog blog, @RequestParam MultipartFile file) {
 		return blogImpl.updateBlog(blog, file);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@DeleteMapping("/delete")
 	public void deleteBlog(@RequestParam Long id) {
 		blogImpl.deleteBlog(id);

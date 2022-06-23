@@ -39,36 +39,34 @@ http://localhost:8080/publisher/delete?id=2  (xóa data theo id).
 
 ====================================================================================
 
-Author
+Login & Register & phân quyền(User)
 -GET METHOD-
-http://localhost:8080/author/get?pageSize=5  (Số data trong 1 trang).
-http://localhost:8080/author/get?pageSize=5&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
-http://localhost:8080/author/get?pageSize=5&pageNo=0&sortBy=name  (sắp xếp theo tên cột).
-http://localhost:8080/author/get?pageSize=5&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
-http://localhost:8080/author/get?id=2  (lấy ra author theo id).
-http://localhost:8080/author/findByName?name=author7 (filter theo name).
+http://localhost:8080/user/get?pageSize=5  (Số data trong 1 trang).
+http://localhost:8080/user/get?pageSize=5&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
+http://localhost:8080/user/get?pageSize=5&pageNo=0&sortBy=title  (sắp xếp theo tên cột).
+http://localhost:8080/user/get?pageSize=5&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
+http://localhost:8080/user/get?id=2  (lấy ra publisher theo id).
+http://localhost:8080/user/findByName?name=dang  (filter theo name).
 -POST METHOD-
-http://localhost:8080/author/add  (các tham số cần truyền :name,status).
+http://localhost:8080/auth/signup(đăng ký ví dụ:
+{
+    "name":"dang",
+    "username":"mod1",
+    "password":"1234$",
+    "phone":"0987456321",
+    "email":"nguyenhaidang25072001@gmail.com",
+    "address":"da nang",
+    "gender":true,
+    "status":true,
+    "role":["mod","user"] 
+}
+trong role truyền các quyền (có 3 quyền admin, mod, user nếu không thêm role quyền mặc định là user).
+http://localhost:8080/auth/signin(đăng nhập ví dụ:
+{
+    "username":"mod1",
+    "password":"1234$"
+}
+đăng nhập thành công sẽ trả về thông tin user và token và type).
 -PUT METHOD-
-http://localhost:8080/author/update  (các tham số cần truyền :id,name,status).
--DELETE METHOD-
-http://localhost:8080/author/delete?id=2  (xóa data theo id).
-
-====================================================================================
-====================================================================================
-
-Category
--GET METHOD-
-http://localhost:8080/category/get?pageSize=5  (Số data trong 1 trang).
-http://localhost:8080/category/get?pageSize=5&pageNo=0&  (trang thứ nhất bắt đầu bằng 0).
-http://localhost:8080/category/get?pageSize=5&pageNo=0&sortBy=name  (sắp xếp theo tên cột).
-http://localhost:8080/category/get?pageSize=5&pageNo=0&sortBy=content&sortDir=asc  (kiểu sắp xếp tăng hoặc giảm).
-http://localhost:8080/category/get?id=2  (lấy ra category theo id).
-http://localhost:8080/category/findByName?name=category7 (filter theo name).
--POST METHOD-
-http://localhost:8080/category/add  (các tham số cần truyền :name,status).
--PUT METHOD-
-http://localhost:8080/category/update  (các tham số cần truyền :id,name,status).
--DELETE METHOD-
-http://localhost:8080/category/delete?id=2  (xóa data theo id).
-
+http://localhost:8080/user/update  (các tham số cần truyền :id,name,username,password,phone,email,address,gender,status,role[]).-DELETE METHOD-
+http://localhost:8080/user/delete?id=2  (xóa data theo id).

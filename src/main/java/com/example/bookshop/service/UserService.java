@@ -2,11 +2,17 @@ package com.example.bookshop.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
 
 import com.example.bookshop.entity.User;
-@Service
+
 public interface UserService {
-	List<User> getUsers();
-	User saveUser(User user);
+	List<User> getUsers(int pageNo, int pageSize, String sortBy, String sortDir);
+
+	User getUserById(Long id);
+
+	List<User> getUserByName(String name);
+
+	User updateUser(User user);
+
+	void deleteUser(Long id);
 }
