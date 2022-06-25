@@ -10,6 +10,8 @@ import com.example.bookshop.entity.Author;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long>{
+	Author findByName(String name);
+	
 	@Query("select a from Author a where a.name like %:name%")
 	List<Author> searchAuthorByName(String name);
 }

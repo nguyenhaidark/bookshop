@@ -51,6 +51,7 @@ public class BlogImpl implements BlogService {
 		if (multipartFile.getOriginalFilename().length() > 2) {
 			exBlog.setFileName(fileName);
 		}
+		exBlog.setUpdatedDate(GetDateNow.getDate());
 		exBlog.setContent(blog.getContent());
 		exBlog.setTitle(blog.getTitle());
 		exBlog.setStatus(blog.isStatus());
