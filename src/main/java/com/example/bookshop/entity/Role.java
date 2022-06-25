@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.example.bookshop.commom.ERole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class Role {
 	@Column
 	private ERole name;
 	@ManyToMany(mappedBy = "roles")
+	@JsonIgnore
 	private List<User> users = new ArrayList<>();
 
 	public Role() {
