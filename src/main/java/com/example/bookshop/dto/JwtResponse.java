@@ -22,9 +22,11 @@ public class JwtResponse {
 
 	private List<String> roles;
 
+	private String message;
+
 	public JwtResponse(String token, long id, String name, String username, String passWord, String phone, String email,
-			String address, boolean gender, boolean status, String createdDate, String updatedDate,
-			List<String> roles) {
+			String address, boolean gender, boolean status, String createdDate, String updatedDate, List<String> roles,
+			String message) {
 		super();
 		this.token = token;
 		this.id = id;
@@ -39,6 +41,7 @@ public class JwtResponse {
 		this.createdDate = createdDate;
 		this.updatedDate = updatedDate;
 		this.roles = roles;
+		this.message = message;
 	}
 
 	public String getAccessToken() {

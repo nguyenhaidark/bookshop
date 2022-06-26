@@ -69,7 +69,7 @@ public class AuthController {
 				userDetails.isStatus(),
 				userDetails.getCreatedDate(),
 				userDetails.getUpdatedDate(),
-				roles));
+				roles,"Logged in successfully"));
 	}
 
 	@PostMapping("/signup")
