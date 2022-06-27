@@ -33,6 +33,8 @@ public class Book {
 	@Column
 	private double price;
 	@Column
+	private double saleprice;
+	@Column
 	private int quantity;
 	@Column
 	private boolean status;
@@ -62,10 +64,11 @@ public class Book {
 		super();
 	}
 
-	public Book(String name, double price, int quantity, boolean status) {
+	public Book(String name, double price,double saleprice, int quantity, boolean status) {
 		super();
 		this.name = name;
 		this.price = price;
+		this.saleprice = saleprice;
 		this.quantity = quantity;
 		this.status = status;
 	}

@@ -68,7 +68,7 @@ public class BookImpl implements BookService {
 		for (String item : strAuthor) {
 			authors.add(authorRepository.findByName(item.toString()));
 		}
-		Book book = new Book(bookRequest.getName(), bookRequest.getPrice(), bookRequest.getQuantity(),
+		Book book = new Book(bookRequest.getName(), bookRequest.getPrice(),bookRequest.getSaleprice(), bookRequest.getQuantity(),
 				bookRequest.isStatus());
 		book.setCategories(categories);
 		book.setAuthors(authors);
