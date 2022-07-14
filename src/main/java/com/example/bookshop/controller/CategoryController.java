@@ -3,6 +3,7 @@ package com.example.bookshop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,17 +43,17 @@ public class CategoryController {
 	public List<Category> getByName(@RequestParam String name) {
 		return categoryImpl.getCategoryName(name);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PostMapping("/add")
 	public Category addCategory(@RequestBody Category category) {
 		return categoryImpl.addCategory(category);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PutMapping("/update")
 	public Category updateCategory(@RequestBody Category category) {
 		return categoryImpl.updateCategory(category);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@DeleteMapping("/delete")
 	public void Category(@RequestParam Long id) {
 		categoryImpl.deleteCategory(id);

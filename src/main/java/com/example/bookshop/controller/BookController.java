@@ -3,6 +3,7 @@ package com.example.bookshop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +44,7 @@ public class BookController {
 	public List<Book> getByName(@RequestParam String name) {
 		return bookImpl.getBookByName(name);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PostMapping("/add")
 	public String addBook(BookRequest bookRequest, @RequestParam MultipartFile file) throws Exception {
 		if (file.getContentType().contains("image")) {
@@ -53,12 +54,12 @@ public class BookController {
 			return "This file is not an image";
 		}
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PutMapping("/update")
 	public Book updateBook(BookRequest bookRequest, @RequestParam MultipartFile file) {
 		return bookImpl.updateBook(bookRequest, file);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@DeleteMapping("/delete")
 	public void deleteBook(@RequestParam Long id) {
 		bookImpl.deleteBook(id);

@@ -3,6 +3,7 @@ package com.example.bookshop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,8 @@ import com.example.bookshop.service.impl.UserImpl;
 public class UserController {
 	@Autowired
 	UserImpl userImpl;
-
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/get")
 	public List<User> getAll(
 			@RequestParam(defaultValue = AppConstants.DEFAULT_PAGE_NUMBER, required = false) int pageNo,
@@ -41,12 +43,12 @@ public class UserController {
 	public List<User> getByName(@RequestParam String name) {
 		return userImpl.getUserByName(name);
 	}
-
+	@PreAuthorize("hasRole('USER')or hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PutMapping("/update")
 	public User updateUser(@RequestBody User user) {
 		return userImpl.updateUser(user);
 	}
-
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/delete")
 	public void deleteUser(@RequestParam Long id) {
 		userImpl.deleteUser(id);

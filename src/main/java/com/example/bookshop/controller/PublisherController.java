@@ -3,6 +3,7 @@ package com.example.bookshop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,17 +43,17 @@ public class PublisherController {
 	public List<Publisher> getByName(@RequestParam String name) {
 		return publisherImpl.getPublisherByName(name);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PostMapping("/add")
 	public Publisher addPublisher(@RequestBody Publisher publisher) {
 		return publisherImpl.addPublisher(publisher);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@PutMapping("/update")
 	public Publisher updatePublisher(@RequestBody Publisher publisher) {
 		return publisherImpl.updatePublisher(publisher);
 	}
-
+	@PreAuthorize("hasRole('MODERATOR')or hasRole('ADMIN')")
 	@DeleteMapping("/delete")
 	public void deletePublisher(@RequestParam Long id) {
 		publisherImpl.deletePublisher(id);
