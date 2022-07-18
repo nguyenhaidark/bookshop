@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.bookshop.entity.Blog;
@@ -46,11 +45,12 @@ public class BlogImpl implements BlogService {
 	@Override
 	public Blog updateBlog(Blog blog, MultipartFile multipartFile) {
 		Blog exBlog = blogRepository.findById(blog.getId()).orElse(null);
-		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		exBlog.setUpdatedDate(GetDateNow.getDate());
-		if (multipartFile.getOriginalFilename().length() > 2) {
-			exBlog.setFileName(fileName);
-		}
+//		if (multipartFile.getOriginalFilename().length() > 2) {
+//			exBlog.setFileName(fileName);
+//		}
+		exBlog.setFileName(Upload.UploadImage(multipartFile));
 		exBlog.setUpdatedDate(GetDateNow.getDate());
 		exBlog.setContent(blog.getContent());
 		exBlog.setTitle(blog.getTitle());

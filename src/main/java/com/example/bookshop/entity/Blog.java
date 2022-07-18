@@ -19,6 +19,8 @@ public class Blog {
 	@Column
 	private String title;
 	@Column
+	private String description;
+	@Column
 	private String content;
 	@Column
 	private String fileName;

@@ -9,7 +9,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.bookshop.dto.BookRequest;
@@ -82,11 +81,12 @@ public class BookImpl implements BookService {
 	@Override
 	public Book updateBook(BookRequest bookRequest, MultipartFile multipartFile) {
 		Book exBook = bookRepository.findById(bookRequest.getId()).orElse(null);
-		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+//		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		exBook.setUpdatedDate(GetDateNow.getDate());
-		if (multipartFile.getOriginalFilename().length() > 2) {
-			exBook.setFileName(fileName);
-		}
+//		if (multipartFile.getOriginalFilename().length() > 2) {
+//			exBook.setFileName(fileName);
+//		}
+		exBook.setFileName(Upload.UploadImage(multipartFile));
 		List<String> strCatgorys = bookRequest.getCategories();
 		List<Category> categories = new ArrayList<>();
 		List<String> strAuthor = bookRequest.getAuthors();
@@ -102,6 +102,7 @@ public class BookImpl implements BookService {
 		exBook.setPublisher(publisherRepository.findByName(bookRequest.getPublisher()));
 		exBook.setName(bookRequest.getName());
 		exBook.setPrice(bookRequest.getPrice());
+		exBook.setSaleprice(bookRequest.getSaleprice());
 		exBook.setQuantity(bookRequest.getQuantity());
 		exBook.setStatus(bookRequest.isStatus());
 		exBook.setUpdatedDate(GetDateNow.getDate());
