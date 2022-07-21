@@ -41,4 +41,20 @@ public class Bill {
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
 	private User user;
+	public Bill(long id, double totalPrice, boolean status, String createdDate, String updatedDate, List<Book> books) {
+		super();
+		this.id = id;
+		this.totalPrice = totalPrice;
+		this.status = status;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+		this.books = books;
+	}
+	public Bill() {
+		super();
+	}
+	
+	
+	
+	
 }
